@@ -30,7 +30,7 @@ const handleSubmit = (e) => {
     body: JSON.stringify(formData),
   };
 
-  fetch('http://localhost:3000/api/register', requestBody)
+  fetch('http://localhost:4440/api/register', requestBody)
     .then((response) => {
       if (response.ok) {
         alert("Registration Successful!");

@@ -1,3 +1,5 @@
+/* eslint-disable eqeqeq */
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './custom.css'; // Import custom CSS
@@ -27,23 +29,18 @@ const handleSubmit = async () => {
   setLoading(true);
 
   try {
-    const response = await fetch('http://localhost:3000/api/login', {
+    const response = await fetch('http://localhost:4440/api/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(formData),
     });
-
-    if (response.ok) {
-      const data = await response.json();
-
-      if (data.token) {
-        localStorage.setItem('token', data.token);
+    console.log(response)
+    if (response.status=="200") {
+      
         navigate('/home');
-      } else {
-        setError('Login failed. Token not received.');
-      }
+      
     } else {
       setError('Login failed. Please check your credentials.');
     }
